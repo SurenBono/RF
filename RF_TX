@@ -1,0 +1,19 @@
+//TRANSMITTER D12 MISO (5VCC)
+
+#include <RH_ASK.h>
+#include <SPI.h>
+
+RH_ASK tx;
+
+void setup()
+{
+tx.init();
+}
+
+void loop()
+{
+  const char *msg = "Radio tx";
+  tx.send((uint8_t *)msg, strlen(msg));
+  tx.waitPacketSent();
+  delay(1000);
+}
